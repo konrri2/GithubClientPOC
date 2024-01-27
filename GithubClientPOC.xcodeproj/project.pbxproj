@@ -15,6 +15,12 @@
 		76FEC0892B643AF600295557 /* user0.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC0882B643AF600295557 /* user0.json */; };
 		76FEC08B2B64469000295557 /* UsersList_2users.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08A2B64469000295557 /* UsersList_2users.json */; };
 		76FEC08E2B65022500295557 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08D2B65022500295557 /* Localizable.xcstrings */; };
+		76FEC0912B65125F00295557 /* DataProviderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FEC0902B65125F00295557 /* DataProviderProtocol.swift */; };
+		76FEC0932B65135C00295557 /* MockInstantDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FEC0922B65135C00295557 /* MockInstantDataProvider.swift */; };
+		76FEC0962B6513C500295557 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FEC0952B6513C500295557 /* Logger.swift */; };
+		76FEC0992B6517E500295557 /* Bundle+decodeJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FEC0982B6517E500295557 /* Bundle+decodeJson.swift */; };
+		76FEC09B2B6518B900295557 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FEC09A2B6518B900295557 /* User.swift */; };
+		76FEC09D2B651BBC00295557 /* UserDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76FEC09C2B651BBC00295557 /* UserDetailsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +44,12 @@
 		76FEC0882B643AF600295557 /* user0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user0.json; sourceTree = "<group>"; };
 		76FEC08A2B64469000295557 /* UsersList_2users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UsersList_2users.json; sourceTree = "<group>"; };
 		76FEC08D2B65022500295557 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		76FEC0902B65125F00295557 /* DataProviderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProviderProtocol.swift; sourceTree = "<group>"; };
+		76FEC0922B65135C00295557 /* MockInstantDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockInstantDataProvider.swift; sourceTree = "<group>"; };
+		76FEC0952B6513C500295557 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		76FEC0982B6517E500295557 /* Bundle+decodeJson.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+decodeJson.swift"; sourceTree = "<group>"; };
+		76FEC09A2B6518B900295557 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		76FEC09C2B651BBC00295557 /* UserDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				764846202B64338900A0E7C1 /* GithubClientPOC */,
+				764846212B64338900A0E7C1 /* GithubClientPOCApp.swift */,
+				76FEC08D2B65022500295557 /* Localizable.xcstrings */,
 				764846312B64338A00A0E7C1 /* GithubClientPOCTests */,
 				7648461F2B64338900A0E7C1 /* Products */,
 			);
@@ -79,13 +93,14 @@
 		764846202B64338900A0E7C1 /* GithubClientPOC */ = {
 			isa = PBXGroup;
 			children = (
-				76FEC0872B643AE000295557 /* Mocks */,
-				76FEC0862B64363600295557 /* Views */,
-				76FEC0852B64361C00295557 /* Models */,
-				764846212B64338900A0E7C1 /* GithubClientPOCApp.swift */,
 				764846252B64338A00A0E7C1 /* Assets.xcassets */,
+				76FEC08F2B65122200295557 /* DataProviders */,
+				76FEC0972B6517CC00295557 /* Extensions */,
+				76FEC0942B6513AE00295557 /* Helpers */,
+				76FEC0872B643AE000295557 /* Mocks */,
+				76FEC0852B64361C00295557 /* Models */,
 				764846272B64338A00A0E7C1 /* Preview Content */,
-				76FEC08D2B65022500295557 /* Localizable.xcstrings */,
+				76FEC0862B64363600295557 /* Views */,
 			);
 			path = GithubClientPOC;
 			sourceTree = "<group>";
@@ -109,6 +124,7 @@
 		76FEC0852B64361C00295557 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				76FEC09A2B6518B900295557 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -117,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				764846232B64338900A0E7C1 /* ContentView.swift */,
+				76FEC09C2B651BBC00295557 /* UserDetailsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +145,31 @@
 				76FEC08A2B64469000295557 /* UsersList_2users.json */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		76FEC08F2B65122200295557 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				76FEC0902B65125F00295557 /* DataProviderProtocol.swift */,
+				76FEC0922B65135C00295557 /* MockInstantDataProvider.swift */,
+			);
+			path = DataProviders;
+			sourceTree = "<group>";
+		};
+		76FEC0942B6513AE00295557 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				76FEC0952B6513C500295557 /* Logger.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		76FEC0972B6517CC00295557 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				76FEC0982B6517E500295557 /* Bundle+decodeJson.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -234,8 +276,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76FEC09D2B651BBC00295557 /* UserDetailsView.swift in Sources */,
+				76FEC0962B6513C500295557 /* Logger.swift in Sources */,
+				76FEC0932B65135C00295557 /* MockInstantDataProvider.swift in Sources */,
+				76FEC0992B6517E500295557 /* Bundle+decodeJson.swift in Sources */,
 				764846242B64338900A0E7C1 /* ContentView.swift in Sources */,
+				76FEC0912B65125F00295557 /* DataProviderProtocol.swift in Sources */,
 				764846222B64338900A0E7C1 /* GithubClientPOCApp.swift in Sources */,
+				76FEC09B2B6518B900295557 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
