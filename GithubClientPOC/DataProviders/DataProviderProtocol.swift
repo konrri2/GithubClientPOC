@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DataProviderProtocol {
-    func searchForUsers(byName name: String)
+    func searchForUsers(byName name: String, completion: @escaping (Result<UsersListResponse, Error>) -> Void)
 }

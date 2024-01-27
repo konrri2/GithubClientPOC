@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Decodable {
+struct User: Decodable, Identifiable {
     let login: String
     let id: Int
 }
@@ -15,8 +15,8 @@ struct User: Decodable {
 // MARK: - mock data for testing and preview
 extension User {
     static func readUserFromJson() -> User {
-        guard let user = Bundle.main.decode(User.self, from: "user0.json") else {
-                fatalError("Project is missing mock")
+        guard let user = Bundle.main.decode(User.self, from: "User0.json") else {
+            fatalError("Project is missing mock")
         }
         
         return user

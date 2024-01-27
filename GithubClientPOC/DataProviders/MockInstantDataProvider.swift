@@ -8,7 +8,7 @@
 import Foundation
 
 final class MockInstantDataProvider: DataProviderProtocol {
-    func searchForUsers(byName name: String) {
-        Log.todo("searchForUsers")
+    func searchForUsers(byName name: String, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
+        completion(.success(UsersListResponse.readUserFromJson()))
     }
 }
