@@ -1,0 +1,48 @@
+{
+  "total_count": 2,
+  "incomplete_results": false,
+  "items": [
+    {
+      "login": "konrri",
+      "id": 18052314,
+      "node_id": "MDQ6VXNlcjE4MDUyMzE0",
+      "avatar_url": "https://avatars.githubusercontent.com/u/18052314?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/konrri",
+      "html_url": "https://github.com/konrri",
+      "followers_url": "https://api.github.com/users/konrri/followers",
+      "following_url": "https://api.github.com/users/konrri/following{/other_user}",
+      "gists_url": "https://api.github.com/users/konrri/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/konrri/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/konrri/subscriptions",
+      "organizations_url": "https://api.github.com/users/konrri/orgs",
+      "repos_url": "https://api.github.com/users/konrri/repos",
+      "events_url": "https://api.github.com/users/konrri/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/konrri/received_events",
+      "type": "User",
+      "site_admin": false,
+      "score": 1.0
+    },
+    {
+      "login": "konrri2",
+      "id": 34405113,
+      "node_id": "MDQ6VXNlcjM0NDA1MTEz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34405113?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/konrri2",
+      "html_url": "https://github.com/konrri2",
+      "followers_url": "https://api.github.com/users/konrri2/followers",
+      "following_url": "https://api.github.com/users/konrri2/following{/other_user}",
+      "gists_url": "https://api.github.com/users/konrri2/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/konrri2/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/konrri2/subscriptions",
+      "organizations_url": "https://api.github.com/users/konrri2/orgs",
+      "repos_url": "https://api.github.com/users/konrri2/repos",
+      "events_url": "https://api.github.com/users/konrri2/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/konrri2/received_events",
+      "type": "User",
+      "site_admin": false,
+      "score": 1.0
+    }
+  ]
+}

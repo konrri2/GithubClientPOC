@@ -12,6 +12,9 @@
 		764846262B64338A00A0E7C1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 764846252B64338A00A0E7C1 /* Assets.xcassets */; };
 		764846292B64338A00A0E7C1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 764846282B64338A00A0E7C1 /* Preview Assets.xcassets */; };
 		764846332B64338A00A0E7C1 /* GithubClientPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764846322B64338A00A0E7C1 /* GithubClientPOCTests.swift */; };
+		76FEC0892B643AF600295557 /* user0.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC0882B643AF600295557 /* user0.json */; };
+		76FEC08B2B64469000295557 /* UsersList_2users.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08A2B64469000295557 /* UsersList_2users.json */; };
+		76FEC08E2B65022500295557 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08D2B65022500295557 /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +35,9 @@
 		764846282B64338A00A0E7C1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7648462E2B64338A00A0E7C1 /* GithubClientPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GithubClientPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		764846322B64338A00A0E7C1 /* GithubClientPOCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubClientPOCTests.swift; sourceTree = "<group>"; };
+		76FEC0882B643AF600295557 /* user0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = user0.json; sourceTree = "<group>"; };
+		76FEC08A2B64469000295557 /* UsersList_2users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UsersList_2users.json; sourceTree = "<group>"; };
+		76FEC08D2B65022500295557 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +79,13 @@
 		764846202B64338900A0E7C1 /* GithubClientPOC */ = {
 			isa = PBXGroup;
 			children = (
+				76FEC0872B643AE000295557 /* Mocks */,
+				76FEC0862B64363600295557 /* Views */,
+				76FEC0852B64361C00295557 /* Models */,
 				764846212B64338900A0E7C1 /* GithubClientPOCApp.swift */,
-				764846232B64338900A0E7C1 /* ContentView.swift */,
 				764846252B64338A00A0E7C1 /* Assets.xcassets */,
 				764846272B64338A00A0E7C1 /* Preview Content */,
+				76FEC08D2B65022500295557 /* Localizable.xcstrings */,
 			);
 			path = GithubClientPOC;
 			sourceTree = "<group>";
@@ -95,6 +104,30 @@
 				764846322B64338A00A0E7C1 /* GithubClientPOCTests.swift */,
 			);
 			path = GithubClientPOCTests;
+			sourceTree = "<group>";
+		};
+		76FEC0852B64361C00295557 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		76FEC0862B64363600295557 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				764846232B64338900A0E7C1 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		76FEC0872B643AE000295557 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				76FEC0882B643AF600295557 /* user0.json */,
+				76FEC08A2B64469000295557 /* UsersList_2users.json */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -161,6 +194,7 @@
 			knownRegions = (
 				en,
 				Base,
+				pl,
 			);
 			mainGroup = 764846152B64338900A0E7C1;
 			productRefGroup = 7648461F2B64338900A0E7C1 /* Products */;
@@ -179,7 +213,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				764846292B64338A00A0E7C1 /* Preview Assets.xcassets in Resources */,
+				76FEC08E2B65022500295557 /* Localizable.xcstrings in Resources */,
 				764846262B64338A00A0E7C1 /* Assets.xcassets in Resources */,
+				76FEC08B2B64469000295557 /* UsersList_2users.json in Resources */,
+				76FEC0892B643AF600295557 /* user0.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

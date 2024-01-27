@@ -19,6 +19,11 @@ struct ContentView: View {
     }
 }
 
-#Preview {
+#Preview("English") {
     ContentView()
+}
+
+#Preview("Polish") {
+    ContentView()
+        .environment(\.locale, Locale(identifier: "PL"))
 }
