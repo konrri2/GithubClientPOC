@@ -28,4 +28,12 @@ extension UsersListResponse {
         
         return user
     }
+    
+    static func readUserFromJson(forPage page: Int) -> UsersListResponse {
+        guard let user = Bundle.main.decode(UsersListResponse.self, from: "ListPage\(page).json") else {
+            fatalError("Project is missing mock")
+        }
+        
+        return user
+    }
 }

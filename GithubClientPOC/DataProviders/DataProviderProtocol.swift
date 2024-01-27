@@ -8,5 +8,8 @@
 import Foundation
 
 protocol DataProviderProtocol {
-    func searchForUsers(byName name: String, completion: @escaping (Result<UsersListResponse, Error>) -> Void)
+    func getUsers(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void)
+    
+    /// Stop downloading user list for previous name
+    func cancelPreviousRequest()
 }

@@ -7,8 +7,18 @@
 
 import Foundation
 
+/// For unit test and previous
 final class MockInstantDataProvider: DataProviderProtocol {
-    func searchForUsers(byName name: String, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
-        completion(.success(UsersListResponse.readUserFromJson()))
+    func getUsers(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
+        if page == 1 {
+            completion(.success(UsersListResponse.readUserFromJson()))
+        } else {
+            let empty = UsersListResponse(items: [], totalCount: 0, incompleteResults: false)
+            completion(.success(empty))
+        }
+    }
+    
+    func cancelPreviousRequest() {
+        Log.debug("mock data provider cannot cancel previous request")
     }
 }
