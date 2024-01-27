@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct UsersListView: View {
-    @StateObject var viewModel: GitHubUsersViewModel
+    @EnvironmentObject var viewModel: GitHubUsersViewModel
     
     var body: some View {
-        List(viewModel.users) { user in
-            Text(user.login)
+        List(viewModel.users, selection: $viewModel.selectedUser) { user in
+            NavigationLink(user.login, value: user)
         }
         .onAppear {
             viewModel.searchForUsers(byName: "TODO search")
@@ -21,6 +21,6 @@ struct UsersListView: View {
 }
 
 #Preview {
-    let vm = GitHubUsersViewModel(dataProvider: MockInstantDataProvider())
-    return UsersListView(viewModel: vm)
+    UsersListView()
+        .environmentObject(GitHubUsersViewModel(dataProvider: MockInstantDataProvider()))
 }

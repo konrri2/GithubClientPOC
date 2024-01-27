@@ -7,9 +7,21 @@
 
 import Foundation
 
+// TODO: paging with loading indicator
+enum LoadingState: Equatable {
+    case notStarted
+    case waitAndReady
+    case isLoading
+    case requestedNextPageLoadingButWasBusy /// this will happen if the user scrolls very fast - faster than the data is being loaded
+    case finishedAll
+    case error(message: String)
+}
+
 @MainActor
 final class GitHubUsersViewModel: ObservableObject {
     @Published var users: [User] = []
+    @Published var selectedUser: User?
+    @Published var loadingState: LoadingState = .notStarted
     
     private let dataProvider: DataProviderProtocol
     

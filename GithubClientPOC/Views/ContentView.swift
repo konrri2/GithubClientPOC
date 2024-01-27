@@ -8,22 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var viewModel: GitHubUsersViewModel
+    
+    @State private var columnVisibility = NavigationSplitViewVisibility.all
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationSplitView(columnVisibility:  $columnVisibility) {
+            UsersListView()
+        } detail: {
+            UserDetailsView()
         }
-        .padding()
+        .navigationSplitViewStyle(.balanced)
+        .environmentObject(viewModel)
     }
 }
 
 #Preview("English") {
-    ContentView()
+    let vm = GitHubUsersViewModel(dataProvider: MockInstantDataProvider())
+    return ContentView(viewModel: vm)
 }
 
 #Preview("Polish") {
-    ContentView()
+    let vm = GitHubUsersViewModel(dataProvider: MockInstantDataProvider())
+    return ContentView(viewModel: vm)
         .environment(\.locale, Locale(identifier: "PL"))
 }

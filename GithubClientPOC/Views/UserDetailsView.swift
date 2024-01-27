@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct UserDetailsView: View {
-    @State var user: User
+    @EnvironmentObject var viewModel: GitHubUsersViewModel
     
     var body: some View {
-        Text(user.login)
-            .font(.title)
+        if let user = viewModel.selectedUser {
+            Text(user.login)
+                .font(.title)
+        } else {
+            Text("No user selected")
+        }
     }
 }
 
 #Preview {
-    let user = User.readUserFromJson()
-    return UserDetailsView(user: user)
+    UserDetailsView()
+        .environmentObject(GitHubUsersViewModel(dataProvider: MockInstantDataProvider()))
 }

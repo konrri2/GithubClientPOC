@@ -19,6 +19,7 @@
       }
     },
     "Hello, world!" : {
+      "extractionState" : "stale",
       "localizations" : {
         "pl" : {
           "stringUnit" : {
@@ -28,7 +29,7 @@
         }
       }
     },
-    "Hello, World!" : {
+    "No user selected" : {
 
     },
     "ok" : {
