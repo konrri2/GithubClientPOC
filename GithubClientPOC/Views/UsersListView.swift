@@ -13,6 +13,7 @@ struct UsersListView: View {
     }
     
     @EnvironmentObject var viewModel: GitHubUsersViewModel
+    @StateObject var debouncedText = SearchTextDebounce()
     
     var body: some View {
         List(selection: $viewModel.selectedUser) {
@@ -20,7 +21,7 @@ struct UsersListView: View {
                 NavigationLink(user.login, value: user)
             }
             
-            if viewModel.loadingState != .finishedAll {
+            if viewModel.loadingState != .finishedAll && !debouncedText.debouncedText.isEmpty {
                 HStack{
                     Spacer()
                     VStack {
@@ -38,9 +39,15 @@ struct UsersListView: View {
                 }
             }
         }
-        .onAppear {
-            viewModel.searchForUsers(byName: "TODO search")
+        .searchable(text: $debouncedText.text, prompt: "Search for users")
+        .onChange(of: debouncedText.debouncedText) { searchTerm in
+            if !searchTerm.isEmpty  {
+                viewModel.searchForUsers(byName: searchTerm)
+            } else {
+                Log.todo("empty view")
+            }
         }
+        
     }
 }
 

@@ -27,8 +27,7 @@ final class GitHubUsersViewModel: ObservableObject {
 
     @Published var users: [User] = []
     @Published var selectedUser: User?
-    @Published var loadingState: LoadingState = .notStarted 
-    {
+    @Published var loadingState: LoadingState = .notStarted {
         didSet {
             if oldValue == .requestedNextPageLoadingButWasBusy && loadingState == .waitAndReady {
                 Log.debug("===Loading state changed to \(loadingState)")

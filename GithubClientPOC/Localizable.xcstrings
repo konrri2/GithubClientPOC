@@ -18,19 +18,15 @@
         }
       }
     },
-    "Hello, world!" : {
-      "extractionState" : "stale",
+    "No user selected" : {
       "localizations" : {
         "pl" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Witaj, świecie!"
+            "value" : "Nie wybrano użytkownika"
           }
         }
       }
-    },
-    "No user selected" : {
-
     },
     "ok" : {
       "extractionState" : "manual",
@@ -45,6 +41,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ok"
+          }
+        }
+      }
+    },
+    "Search for users" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szukaj użytkownika"
           }
         }
       }
