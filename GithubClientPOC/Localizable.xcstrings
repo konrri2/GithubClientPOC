@@ -18,6 +18,16 @@
         }
       }
     },
+    "Enter name in search bar" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wpisz nazwę w pole wyszukiwania"
+          }
+        }
+      }
+    },
     "List" : {
       "localizations" : {
         "pl" : {

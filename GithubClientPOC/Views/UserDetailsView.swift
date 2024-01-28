@@ -17,13 +17,20 @@ struct UserDetailsView: View {
     var body: some View {
         VStack {
             if let user = viewModel.selectedUser {
-                AsyncImage(url: URL(string: user.avatarURL))
-                // TODO: resizable
+                AsyncImage(url: URL(string: user.avatarURL)) { image in
+                    image
+                        .resizable()
+                        .scaledToFit()
+                } placeholder: {
+                    Color.secondary
+                }
+                .frame(width: 200, height: 200)
                     .frame(width: Layout.avatarSize, height: Layout.avatarSize)
+                
                 Text(user.login)
                     .font(.title)
             } else {
-                Text("No user selected")
+                NoResultsPlaceholder(imageName: "person.fill.viewfinder", text: String(localized: "No user selected"))
             }
         }
         .navigationTitle("User details")

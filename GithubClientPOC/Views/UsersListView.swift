@@ -16,36 +16,45 @@ struct UsersListView: View {
     @StateObject var debouncedText = SearchTextDebounce()
     
     var body: some View {
-        List(selection: $viewModel.selectedUser) {
-            ForEach(viewModel.users) { user in
-                NavigationLink(user.login, value: user)
-            }
-            
-            if viewModel.loadingState != .finishedAll && !debouncedText.debouncedText.isEmpty {
-                HStack{
-                    Spacer()
-                    VStack {
+        VStack {
+            List(selection: $viewModel.selectedUser) {
+                ForEach(viewModel.users) { user in
+                    NavigationLink(user.login, value: user)
+                }
+                
+                if viewModel.loadingState != .finishedAll && !debouncedText.debouncedText.isEmpty {
+                    HStack{
                         Spacer()
-                        ProgressView()
-                            .id(UUID()) /// must be identifiable on the list (otherwise will be hidden after reload)
-                            .progressViewStyle(CircularProgressViewStyle(tint: Color.green))
+                        VStack {
+                            Spacer()
+                            ProgressView()
+                                .id(UUID()) /// must be identifiable on the list (otherwise will be hidden after reload)
+                                .progressViewStyle(CircularProgressViewStyle(tint: ViewsConstants.accentColor))
+                            Spacer()
+                        }
                         Spacer()
                     }
-                    Spacer()
-                }
-                .frame(height: Layout.loadingIndicatorHeight)
-                .onAppear{
-                    viewModel.loadNextPageOfUsers()
+                    .frame(height: Layout.loadingIndicatorHeight)
+                    .onAppear{
+                        viewModel.loadNextPageOfUsers()
+                    }
                 }
             }
-        }
-        .searchable(text: $debouncedText.text, prompt: "Search for users")
-        .onChange(of: debouncedText.debouncedText) { searchTerm in
-            if !searchTerm.isEmpty  {
-                viewModel.searchForUsers(byName: searchTerm)
-            } else {
-                Log.todo("empty view")
+//            .onAppear {
+//                // TODO: remove debug
+//                debouncedText.text = "Debug test"
+//            }
+            .searchable(text: $debouncedText.text, prompt: "Search for users")
+            .onChange(of: debouncedText.debouncedText) { searchTerm in
+                if !searchTerm.isEmpty  {
+                    viewModel.searchForUsers(byName: searchTerm)
+                } else {
+                    Log.todo("empty view")
+                }
             }
+            
+            NoResultsPlaceholder(imageName: "rectangle.and.text.magnifyingglass", text: String(localized: "Enter name in search bar"))
+                .padding()
         }
         .navigationTitle("List")
         
