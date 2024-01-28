@@ -9,7 +9,7 @@ import Foundation
 
 /// For unit test and previous
 final class MockInstantDataProvider: DataProviderProtocol {
-    func getUsers(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
+    func getUsersList(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
         if page == 1 {
             completion(.success(UsersListResponse.readUserFromJson()))
         } else {
@@ -18,7 +18,7 @@ final class MockInstantDataProvider: DataProviderProtocol {
         }
     }
     
-    func cancelPreviousRequest() {
+    func cancelPreviousListRequest() {
         Log.debug("mock data provider cannot cancel previous request")
     }
 }

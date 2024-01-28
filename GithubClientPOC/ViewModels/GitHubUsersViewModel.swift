@@ -41,7 +41,7 @@ final class GitHubUsersViewModel: ObservableObject {
     }
     
     func searchForUsers(byName name: String) {
-        dataProvider.cancelPreviousRequest()
+        dataProvider.cancelPreviousListRequest()
         users = []
         Log.debug("Searching for \(name)")
         userNameToSearch = name
@@ -49,7 +49,7 @@ final class GitHubUsersViewModel: ObservableObject {
         loadingState = .waitAndReady
     }
     
-    internal func loadNextPageOfUsers() {
+    func loadNextPageOfUsers() {
         guard loadingState == .waitAndReady else {
             loadingState = .requestedNextPageLoadingButWasBusy
             return
@@ -63,7 +63,7 @@ final class GitHubUsersViewModel: ObservableObject {
     private func loadPageOfUsers() {
         loadingState = .isLoading
         Log.debug("Loading page \(pageNumber) ")
-        dataProvider.getUsers(byName: self.userNameToSearch, page: self.pageNumber) { [weak self] result in
+        dataProvider.getUsersList(byName: self.userNameToSearch, page: self.pageNumber) { [weak self] result in
             switch result {
             case .success(let resp):
                 Log.debug("Got \(resp.items.count) users")

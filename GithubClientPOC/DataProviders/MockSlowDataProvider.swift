@@ -9,13 +9,13 @@ import Foundation
 
 /// To test paging returns small batch of data after few seconds
 final class MockSlowDataProvider: DataProviderProtocol {
-    func getUsers(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
+    func getUsersList(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             completion(.success(UsersListResponse.readUserFromJson(forPage: page)))
         }
     }
     
-    func cancelPreviousRequest() {
+    func cancelPreviousListRequest() {
         Log.debug("mock data provider cannot cancel previous request")
     }
 }

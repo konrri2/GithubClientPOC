@@ -11,7 +11,7 @@ import SwiftUI
 struct GithubClientPOCApp: App {
     var body: some Scene {
         WindowGroup {
-            let vm = GitHubUsersViewModel(dataProvider: MockSlowDataProvider())
+            let vm = GitHubUsersViewModel(dataProvider: NetworkDataProvider())
             ContentView(viewModel: vm)
         }
     }
