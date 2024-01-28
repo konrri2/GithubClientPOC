@@ -18,6 +18,16 @@
         }
       }
     },
+    "List" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lista"
+          }
+        }
+      }
+    },
     "No user selected" : {
       "localizations" : {
         "pl" : {
@@ -51,6 +61,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Szukaj użytkownika"
+          }
+        }
+      }
+    },
+    "User details" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Szczegóły"
           }
         }
       }

@@ -8,15 +8,25 @@
 import SwiftUI
 
 struct UserDetailsView: View {
+    enum Layout {
+        static let avatarSize: CGFloat = 80
+    }
+    
     @EnvironmentObject var viewModel: GitHubUsersViewModel
     
     var body: some View {
-        if let user = viewModel.selectedUser {
-            Text(user.login)
-                .font(.title)
-        } else {
-            Text("No user selected")
+        VStack {
+            if let user = viewModel.selectedUser {
+                AsyncImage(url: URL(string: user.avatarURL))
+                // TODO: resizable
+                    .frame(width: Layout.avatarSize, height: Layout.avatarSize)
+                Text(user.login)
+                    .font(.title)
+            } else {
+                Text("No user selected")
+            }
         }
+        .navigationTitle("User details")
     }
 }
 

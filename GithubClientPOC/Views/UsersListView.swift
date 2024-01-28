@@ -47,6 +47,7 @@ struct UsersListView: View {
                 Log.todo("empty view")
             }
         }
+        .navigationTitle("List")
         
     }
 }

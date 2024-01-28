@@ -11,18 +11,20 @@ import Alamofire
 final class NetworkDataProvider: DataProviderProtocol {
     private var currentListRequest: Alamofire.DataRequest?
     
-    /// NOTE: hardcoded token to safe time.
+    /// NOTE: The `SecretSettings.swift` file with `globalApiToken` is not pushed to repo
+    /// Please provide github api token
+    /// I've hardcoded token to safe time.
     /// In production app I would use arkana https://github.com/rogerluan/arkana
     private let headers: HTTPHeaders = [
         "Access": "application/json",
-        "Authorization": "Bearer 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"
+        "Authorization": "Bearer \(globalApiToken)"
     ]
     
     func getUsersList(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
         let parameters: Parameters = [
             "page": page,
             "q": name
-            ]
+        ]
         
         let url = "https://api.github.com/search/users"
         
@@ -33,7 +35,7 @@ final class NetworkDataProvider: DataProviderProtocol {
         }
     }
     
-    /// We don't want to mix results from current and previous response, if the user type fast and network is slow
+    /// We don't want to mix results from current and previous response, if the user type fast and/or the network is slow
     func cancelPreviousListRequest() {
         currentListRequest?.cancel()
     }
