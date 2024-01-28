@@ -13,16 +13,25 @@ struct UsersListView: View {
     }
     
     @EnvironmentObject var viewModel: GitHubUsersViewModel
-    @StateObject var debouncedText = SearchTextDebounce()
+    @StateObject var searchText = SearchTextDebounce()
     
     var body: some View {
-        VStack {
+        if viewModel.isNetworkReachable {
+            content
+        } else {
+            ErrorInfoView(imageName: "wifi.slash", text: String(localized: "No internet connection"))
+        }
+    }
+    
+    @ViewBuilder
+    private var content: some View {
+        ZStack {
             List(selection: $viewModel.selectedUser) {
                 ForEach(viewModel.users) { user in
                     NavigationLink(user.login, value: user)
                 }
                 
-                if viewModel.loadingState != .finishedAll && !debouncedText.debouncedText.isEmpty {
+                if viewModel.loadingState != .finishedAll && !searchText.debouncedText.isEmpty {
                     HStack{
                         Spacer()
                         VStack {
@@ -42,10 +51,10 @@ struct UsersListView: View {
             }
 //            .onAppear {
 //                // TODO: remove debug
-//                debouncedText.text = "Debug test"
+//                searchText.text = "Debug test"
 //            }
-            .searchable(text: $debouncedText.text, prompt: "Search for users")
-            .onChange(of: debouncedText.debouncedText) { searchTerm in
+            .searchable(text: $searchText.text, prompt: "Search for users")
+            .onChange(of: searchText.debouncedText) { searchTerm in
                 if !searchTerm.isEmpty  {
                     viewModel.searchForUsers(byName: searchTerm)
                 } else {
@@ -53,8 +62,10 @@ struct UsersListView: View {
                 }
             }
             
-            NoResultsPlaceholder(imageName: "rectangle.and.text.magnifyingglass", text: String(localized: "Enter name in search bar"))
-                .padding()
+            if searchText.text.isEmpty {
+                NoResultsPlaceholder(imageName: "rectangle.and.text.magnifyingglass", text: String(localized: "Enter name in search bar"))
+                    .padding()
+            }
         }
         .navigationTitle("List")
         

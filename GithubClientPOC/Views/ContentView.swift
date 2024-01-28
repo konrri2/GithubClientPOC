@@ -15,9 +15,10 @@ struct ContentView: View {
     var body: some View {
         NavigationSplitView(columnVisibility:  $columnVisibility) {
             UsersListView()
-        } detail: {
+         } detail: {
             UserDetailsView()
         }
+        .navigationBarTitleDisplayMode(.large)
         .navigationSplitViewStyle(.balanced)
         .environmentObject(viewModel)
     }

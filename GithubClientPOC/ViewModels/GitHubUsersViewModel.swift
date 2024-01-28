@@ -6,8 +6,8 @@
 //
 
 import Foundation
+import Combine
 
-// TODO: paging with loading indicator
 enum LoadingState: Equatable {
     case notStarted
     case waitAndReady
@@ -21,10 +21,16 @@ enum LoadingState: Equatable {
 final class GitHubUsersViewModel: ObservableObject {
     private let dataProvider: DataProviderProtocol
     private var userNameToSearch: String = ""
-
+    private let reachabilityHelper = NetworkReachabilityHelper()
+    private var cancellables = Set<AnyCancellable>()
+    
     /// For api pagination
     private var pageNumber: Int = 0
 
+    /// NOTE: The code architecture would be cleaner if only DataProvider check reachability before each call
+    /// However user experience is better with error message dynamically shown depending on network status
+    /// In my experience bosses usually choose pretty UI/UX over pretty code ;-)
+    @Published var isNetworkReachable: Bool = false
     @Published var users: [User] = []
     @Published var selectedUser: User?
     @Published var loadingState: LoadingState = .notStarted {
@@ -38,6 +44,8 @@ final class GitHubUsersViewModel: ObservableObject {
     
     init(dataProvider: DataProviderProtocol) {
         self.dataProvider = dataProvider
+        
+        setupReachabilityBinding()
     }
     
     func searchForUsers(byName name: String) {
@@ -79,4 +87,15 @@ final class GitHubUsersViewModel: ObservableObject {
         }
     }
     
+    private func setupReachabilityBinding() {
+        reachabilityHelper.networkStatus
+            .removeDuplicates()
+            .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] value in
+                Log.debug("Network status = \(value)")
+                self?.isNetworkReachable = self?.reachabilityHelper.isReachable ?? false
+            })
+            .store(in: &cancellables)
+        
+        isNetworkReachable = reachabilityHelper.isReachable ?? false
+    }
 }

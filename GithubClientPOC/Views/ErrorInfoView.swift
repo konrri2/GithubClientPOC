@@ -12,18 +12,29 @@ struct ErrorInfoView: View {
     let text: String
     
     var body: some View {
-        HStack {
-            Image(systemName: imageName)
+        VStack {
+            Spacer()
+            HStack {
+                Spacer()
+                Image(systemName: imageName)
+                
+                Text(text)
+                    .minimumScaleFactor(0.6)
+                Spacer()
+            }
+            .padding()
+            .frame(minHeight: 80)
+            .background(ViewsConstants.errorColor)
+            .clipShape(RoundedRectangle(cornerRadius: ViewsConstants.cornerRadius))
+            .padding()
             
-            Text(text)
-                .minimumScaleFactor(0.6)
+            Spacer()
         }
-        .padding()
-        .background(ViewsConstants.errorColor)
-        .clipShape(RoundedRectangle(cornerRadius: ViewsConstants.cornerRadius))
+        .background(ViewsConstants.errorColor.opacity(0.3))
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 
 #Preview {
-    ErrorInfoView(imageName: "wifi.slash", text: "No internet conection")
+    ErrorInfoView(imageName: "wifi.slash", text: "No internet connection")
 }

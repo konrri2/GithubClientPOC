@@ -38,6 +38,16 @@
         }
       }
     },
+    "No internet connection" : {
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brak połączenia z interentem"
+          }
+        }
+      }
+    },
     "No user selected" : {
       "localizations" : {
         "pl" : {

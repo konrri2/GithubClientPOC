@@ -24,6 +24,7 @@
 		769A7D872B66C25A00C37C8B /* ViewsConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A7D862B66C25A00C37C8B /* ViewsConstants.swift */; };
 		769A7D892B66C30900C37C8B /* NoResultsPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A7D882B66C30900C37C8B /* NoResultsPlaceholder.swift */; };
 		769A7D8B2B66C76000C37C8B /* ErrorInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A7D8A2B66C76000C37C8B /* ErrorInfoView.swift */; };
+		769A7D8D2B66D13300C37C8B /* NetworkReachabilityHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A7D8C2B66D13300C37C8B /* NetworkReachabilityHelper.swift */; };
 		76FEC0892B643AF600295557 /* User0.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC0882B643AF600295557 /* User0.json */; };
 		76FEC08B2B64469000295557 /* UsersList_2users.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08A2B64469000295557 /* UsersList_2users.json */; };
 		76FEC08E2B65022500295557 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08D2B65022500295557 /* Localizable.xcstrings */; };
@@ -68,6 +69,7 @@
 		769A7D862B66C25A00C37C8B /* ViewsConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsConstants.swift; sourceTree = "<group>"; };
 		769A7D882B66C30900C37C8B /* NoResultsPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoResultsPlaceholder.swift; sourceTree = "<group>"; };
 		769A7D8A2B66C76000C37C8B /* ErrorInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInfoView.swift; sourceTree = "<group>"; };
+		769A7D8C2B66D13300C37C8B /* NetworkReachabilityHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkReachabilityHelper.swift; sourceTree = "<group>"; };
 		76FEC0882B643AF600295557 /* User0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User0.json; sourceTree = "<group>"; };
 		76FEC08A2B64469000295557 /* UsersList_2users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UsersList_2users.json; sourceTree = "<group>"; };
 		76FEC08D2B65022500295557 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			children = (
 				76FEC0952B6513C500295557 /* Logger.swift */,
 				769A7D842B667CD500C37C8B /* SecretSettings.swift */,
+				769A7D8C2B66D13300C37C8B /* NetworkReachabilityHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				76FEC09F2B65532E00295557 /* UsersListView.swift in Sources */,
 				76FEC0962B6513C500295557 /* Logger.swift in Sources */,
 				769A7D892B66C30900C37C8B /* NoResultsPlaceholder.swift in Sources */,
+				769A7D8D2B66D13300C37C8B /* NetworkReachabilityHelper.swift in Sources */,
 				769A7D852B667CD500C37C8B /* SecretSettings.swift in Sources */,
 				76FEC0932B65135C00295557 /* MockInstantDataProvider.swift in Sources */,
 				76FEC0A22B65549500295557 /* GitHubUsersViewModel.swift in Sources */,
