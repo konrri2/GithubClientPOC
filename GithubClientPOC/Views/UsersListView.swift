@@ -49,10 +49,10 @@ struct UsersListView: View {
                     }
                 }
             }
-//            .onAppear {
-//                // TODO: remove debug
-//                searchText.text = "Debug test"
-//            }
+            .onAppear {
+                // TODO: remove debug
+                searchText.text = "Debug test"
+            }
             .searchable(text: $searchText.text, prompt: "Search for users")
             .onChange(of: searchText.debouncedText) { searchTerm in
                 if !searchTerm.isEmpty  {

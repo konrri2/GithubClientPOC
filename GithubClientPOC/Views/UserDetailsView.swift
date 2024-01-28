@@ -9,26 +9,24 @@ import SwiftUI
 
 struct UserDetailsView: View {
     enum Layout {
-        static let avatarSize: CGFloat = 80
+        static let avatarSize: CGFloat = 120
     }
     
     @EnvironmentObject var viewModel: GitHubUsersViewModel
     
     var body: some View {
-        VStack {
+        HStack {
             if let user = viewModel.selectedUser {
-                AsyncImage(url: URL(string: user.avatarURL)) { image in
-                    image
-                        .resizable()
-                        .scaledToFit()
-                } placeholder: {
-                    Color.secondary
-                }
-                .frame(width: 200, height: 200)
-                    .frame(width: Layout.avatarSize, height: Layout.avatarSize)
+                BasicUserInfoSubview(user: user)
                 
-                Text(user.login)
-                    .font(.title)
+                VStack(alignment: .leading) {
+                    Text(user.login)
+                        .font(.title)
+                    if let url = URL(string: user.htmlURL) {
+                        Link(user.htmlURL, destination: url)
+                    }
+                }
+                
             } else {
                 NoResultsPlaceholder(imageName: "person.fill.viewfinder", text: String(localized: "No user selected"))
             }
