@@ -21,6 +21,8 @@ struct UserDetailsView: View {
 }
 
 #Preview {
-    UserDetailsView()
-        .environmentObject(GitHubUsersViewModel(dataProvider: MockInstantDataProvider()))
+    let vm = GitHubUsersViewModel(dataProvider: MockInstantDataProvider())
+    vm.selectedUser = User.readUserFromJson()
+    return UserDetailsView()
+        .environmentObject(vm)
 }

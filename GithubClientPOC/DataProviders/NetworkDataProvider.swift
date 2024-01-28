@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 final class NetworkDataProvider: DataProviderProtocol {
-    private var currentRequest: Alamofire.DataRequest?
+    private var currentListRequest: Alamofire.DataRequest?
     
     /// NOTE: hardcoded token to safe time.
     /// In production app I would use arkana https://github.com/rogerluan/arkana
@@ -19,8 +19,6 @@ final class NetworkDataProvider: DataProviderProtocol {
     ]
     
     func getUsersList(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
-        currentRequest?.cancel()
-
         let parameters: Parameters = [
             "page": page,
             "q": name
@@ -28,14 +26,15 @@ final class NetworkDataProvider: DataProviderProtocol {
         
         let url = "https://api.github.com/search/users"
         
-        currentRequest = AF.request(url, method: .get, parameters: parameters, headers: headers)
-        currentRequest?.responseDecodable(of: UsersListResponse.self) { response in
+        currentListRequest = AF.request(url, method: .get, parameters: parameters, headers: headers)
+        currentListRequest?.responseDecodable(of: UsersListResponse.self) { response in
             // NOTE: use custom errors messages prepared by UI/UX designer
             completion(response.result.mapError { $0 as Error })
         }
     }
     
+    /// We don't want to mix results from current and previous response, if the user type fast and network is slow
     func cancelPreviousListRequest() {
-        Log.debug("network data provider cannot cancel previous request")
+        currentListRequest?.cancel()
     }
 }

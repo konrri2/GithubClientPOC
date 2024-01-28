@@ -19,6 +19,8 @@
 		769A7D782B66515E00C37C8B /* NetworkDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A7D772B66515E00C37C8B /* NetworkDataProvider.swift */; };
 		769A7D7A2B6654DC00C37C8B /* SearchTextDebounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A7D792B6654DC00C37C8B /* SearchTextDebounce.swift */; };
 		769A7D7D2B66617800C37C8B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 769A7D7C2B66617800C37C8B /* Alamofire */; };
+		769A7D7F2B66744400C37C8B /* UserDetails.json in Resources */ = {isa = PBXBuildFile; fileRef = 769A7D7E2B66744400C37C8B /* UserDetails.json */; };
+		769A7D852B667CD500C37C8B /* SecretSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769A7D842B667CD500C37C8B /* SecretSettings.swift */; };
 		76FEC0892B643AF600295557 /* User0.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC0882B643AF600295557 /* User0.json */; };
 		76FEC08B2B64469000295557 /* UsersList_2users.json in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08A2B64469000295557 /* UsersList_2users.json */; };
 		76FEC08E2B65022500295557 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 76FEC08D2B65022500295557 /* Localizable.xcstrings */; };
@@ -58,6 +60,8 @@
 		769A7D732B65C49600C37C8B /* MockSlowDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSlowDataProvider.swift; sourceTree = "<group>"; };
 		769A7D772B66515E00C37C8B /* NetworkDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataProvider.swift; sourceTree = "<group>"; };
 		769A7D792B6654DC00C37C8B /* SearchTextDebounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextDebounce.swift; sourceTree = "<group>"; };
+		769A7D7E2B66744400C37C8B /* UserDetails.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = UserDetails.json; sourceTree = "<group>"; };
+		769A7D842B667CD500C37C8B /* SecretSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretSettings.swift; sourceTree = "<group>"; };
 		76FEC0882B643AF600295557 /* User0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = User0.json; sourceTree = "<group>"; };
 		76FEC08A2B64469000295557 /* UsersList_2users.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = UsersList_2users.json; sourceTree = "<group>"; };
 		76FEC08D2B65022500295557 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -166,12 +170,13 @@
 		76FEC0872B643AE000295557 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				76FEC0882B643AF600295557 /* User0.json */,
-				76FEC08A2B64469000295557 /* UsersList_2users.json */,
 				769A7D6B2B65C33F00C37C8B /* ListPage1.json */,
 				769A7D6D2B65C35A00C37C8B /* ListPage2.json */,
 				769A7D6F2B65C36F00C37C8B /* ListPage3.json */,
 				769A7D712B65C45100C37C8B /* ListPage4.json */,
+				76FEC0882B643AF600295557 /* User0.json */,
+				769A7D7E2B66744400C37C8B /* UserDetails.json */,
+				76FEC08A2B64469000295557 /* UsersList_2users.json */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				76FEC0952B6513C500295557 /* Logger.swift */,
+				769A7D842B667CD500C37C8B /* SecretSettings.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -309,6 +315,7 @@
 				769A7D6C2B65C33F00C37C8B /* ListPage1.json in Resources */,
 				769A7D6E2B65C35A00C37C8B /* ListPage2.json in Resources */,
 				76FEC0892B643AF600295557 /* User0.json in Resources */,
+				769A7D7F2B66744400C37C8B /* UserDetails.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +336,7 @@
 				76FEC09D2B651BBC00295557 /* UserDetailsView.swift in Sources */,
 				76FEC09F2B65532E00295557 /* UsersListView.swift in Sources */,
 				76FEC0962B6513C500295557 /* Logger.swift in Sources */,
+				769A7D852B667CD500C37C8B /* SecretSettings.swift in Sources */,
 				76FEC0932B65135C00295557 /* MockInstantDataProvider.swift in Sources */,
 				76FEC0A22B65549500295557 /* GitHubUsersViewModel.swift in Sources */,
 				76FEC0992B6517E500295557 /* Bundle+decodeJson.swift in Sources */,
