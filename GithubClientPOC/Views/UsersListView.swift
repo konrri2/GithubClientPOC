@@ -66,6 +66,11 @@ struct UsersListView: View {
                 NoResultsPlaceholder(imageName: "rectangle.and.text.magnifyingglass", text: String(localized: "Enter name in search bar"))
                     .padding()
             }
+            
+            if case let LoadingState.error(message) = viewModel.loadingState {
+                
+                ErrorInfoView(imageName: "exclamationmark.icloud", text: message)
+            }
         }
         .navigationTitle("List")
         

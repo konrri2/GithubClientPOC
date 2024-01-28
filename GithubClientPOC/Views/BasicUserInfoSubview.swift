@@ -12,15 +12,25 @@ struct BasicUserInfoSubview: View {
     let user: User
     
     var body: some View {
-        AsyncImage(url: URL(string: user.avatarURL)) { image in
-            image
-                .resizable()
-                .scaledToFill()
-        } placeholder: {
-            Color.secondary
+        HStack {
+            AsyncImage(url: URL(string: user.avatarURL)) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                Color.secondary
+            }
+            .frame(width: UserDetailsView.Layout.avatarSize, height: UserDetailsView.Layout.avatarSize)
+            .clipShape(RoundedRectangle(cornerRadius: ViewsConstants.cornerRadius))
+            .padding()
+            
+            VStack(alignment: .leading) {
+                Text(user.login)
+                    .font(.title)
+                if let url = URL(string: user.htmlURL) {
+                    Link(user.htmlURL, destination: url)
+                }
+            }
         }
-        .frame(width: UserDetailsView.Layout.avatarSize, height: UserDetailsView.Layout.avatarSize)
-        .clipShape(RoundedRectangle(cornerRadius: ViewsConstants.cornerRadius))
-        .padding()
     }
 }

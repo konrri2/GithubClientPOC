@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// User info from list
 struct User: Decodable, Identifiable, Hashable {
     let login: String
     let id: Int

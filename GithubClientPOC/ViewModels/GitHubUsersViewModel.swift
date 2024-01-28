@@ -32,11 +32,18 @@ final class GitHubUsersViewModel: ObservableObject {
     /// In my experience bosses usually choose pretty UI/UX over pretty code ;-)
     @Published var isNetworkReachable: Bool = false
     @Published var users: [User] = []
-    @Published var selectedUser: User?
+    @Published var selectedUser: User? {
+        didSet {
+            loadUserDetails()
+        }
+    }
+    
+    @Published var selectedUserDetails: UserDetails?
+    @Published var detailsLoadingErrorMessage: String?
+    
     @Published var loadingState: LoadingState = .notStarted {
         didSet {
             if oldValue == .requestedNextPageLoadingButWasBusy && loadingState == .waitAndReady {
-                Log.debug("===Loading state changed to \(loadingState)")
                 loadPageOfUsers()
             }
         }
@@ -51,7 +58,6 @@ final class GitHubUsersViewModel: ObservableObject {
     func searchForUsers(byName name: String) {
         dataProvider.cancelPreviousListRequest()
         users = []
-        Log.debug("Searching for \(name)")
         userNameToSearch = name
         pageNumber = 0
         loadingState = .waitAndReady
@@ -62,7 +68,6 @@ final class GitHubUsersViewModel: ObservableObject {
             loadingState = .requestedNextPageLoadingButWasBusy
             return
         }
-        Log.debug("loadNextPageOfUsers called with \(loadingState) curentPage: \(pageNumber)")
         pageNumber += 1
         loadPageOfUsers()
     }
@@ -70,19 +75,32 @@ final class GitHubUsersViewModel: ObservableObject {
     /// Makes a request for users (only one page) and adds them to the list
     private func loadPageOfUsers() {
         loadingState = .isLoading
-        Log.debug("Loading page \(pageNumber) ")
         dataProvider.getUsersList(byName: self.userNameToSearch, page: self.pageNumber) { [weak self] result in
             switch result {
             case .success(let resp):
-                Log.debug("Got \(resp.items.count) users")
                 self?.users.append(contentsOf: resp.items)
                 self?.loadingState = (resp.items.count == 0) ? .finishedAll : .waitAndReady
                 
             case .failure(let error):
-                Log.error("Cannot load users \(error.localizedDescription)")
                 // NOTE: use custom errors messages prepared by UI/UX designer
                 self?.loadingState = .error(message: error.localizedDescription)
                 self?.users = []
+            }
+        }
+    }
+    
+    private func loadUserDetails() {
+        selectedUserDetails = nil
+        if let user = selectedUser {
+            dataProvider.getUserDetails(userUrl: user.url) { [weak self] result in
+                switch result {
+                case .success(let resp):
+                    self?.selectedUserDetails = resp
+                case .failure(let error):
+                    Log.error("Cannot load user details \(error.localizedDescription)")
+                    // NOTE: use custom errors messages prepared by UI/UX designer
+                    self?.detailsLoadingErrorMessage = error.localizedDescription
+                }
             }
         }
     }
@@ -91,7 +109,6 @@ final class GitHubUsersViewModel: ObservableObject {
         reachabilityHelper.networkStatus
             .removeDuplicates()
             .sink(receiveCompletion: { _ in }, receiveValue: { [weak self] value in
-                Log.debug("Network status = \(value)")
                 self?.isNetworkReachable = self?.reachabilityHelper.isReachable ?? false
             })
             .store(in: &cancellables)

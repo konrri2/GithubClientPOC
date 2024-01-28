@@ -9,9 +9,11 @@ import SwiftUI
 
 /// Shows information only when user details have been downloaded
 struct SpecificUserInfoSubview: View {
-    let user: User
+    let details: UserDetails
     
     var body: some View {
-        Text("name")
+        VStack {
+            Text(details.name ?? "")
+        }
     }
 }

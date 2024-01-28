@@ -18,6 +18,10 @@ final class MockInstantDataProvider: DataProviderProtocol {
         }
     }
     
+    func getUserDetails(userUrl: String, completion: @escaping (Result<UserDetails, Error>) -> Void) {
+        completion(.success(UserDetails.readUserFromJson()))
+    }
+    
     func cancelPreviousListRequest() {
         Log.debug("mock data provider cannot cancel previous request")
     }

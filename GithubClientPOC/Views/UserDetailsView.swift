@@ -17,16 +17,16 @@ struct UserDetailsView: View {
     var body: some View {
         HStack {
             if let user = viewModel.selectedUser {
-                BasicUserInfoSubview(user: user)
-                
-                VStack(alignment: .leading) {
-                    Text(user.login)
-                        .font(.title)
-                    if let url = URL(string: user.htmlURL) {
-                        Link(user.htmlURL, destination: url)
+                VStack {
+                    BasicUserInfoSubview(user: user)
+                    
+                    if let user = viewModel.selectedUserDetails {
+                        SpecificUserInfoSubview(details: user)
+                    } else {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: ViewsConstants.accentColor))
                     }
                 }
-                
             } else {
                 NoResultsPlaceholder(imageName: "person.fill.viewfinder", text: String(localized: "No user selected"))
             }
