@@ -17,6 +17,10 @@ struct UserDetailsView: View {
     var body: some View {
         ScrollView {
             HStack {
+                if let message = viewModel.detailsLoadingErrorMessage {
+                    ErrorInfoView(imageName: "exclamationmark.icloud", text: message)
+                }
+                
                 if let user = viewModel.selectedUser {
                     VStack {
                         BasicUserInfoSubview(user: user)
@@ -33,13 +37,7 @@ struct UserDetailsView: View {
                 }
             }
         }
+        .clipped()
         .navigationTitle("User details")
     }
-}
-
-#Preview {
-    let vm = GitHubUsersViewModel(dataProvider: MockInstantDataProvider())
-    vm.selectedUser = User.readUserFromJson()
-    return UserDetailsView()
-        .environmentObject(vm)
 }

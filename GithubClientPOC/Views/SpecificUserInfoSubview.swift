@@ -64,6 +64,7 @@ struct SpecificUserInfoSubview: View {
                     Divider()
                     GridRow {
                         InfoCard(details.type, "person.crop.circle.badge.questionmark", title: String(localized: "Type"))
+                            .gridCellColumns(2)
                     }
                     GridRow {
                         InfoCard(details.location, "location.circle", title: String(localized: "Location"))
@@ -128,6 +129,7 @@ struct InfoCard: View {
                 
                 Text(text)
                     .font(.largeTitle)
+                    .lineLimit(1)
                     .minimumScaleFactor(0.6)
             }
         }

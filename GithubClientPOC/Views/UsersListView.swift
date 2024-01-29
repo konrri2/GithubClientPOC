@@ -25,52 +25,57 @@ struct UsersListView: View {
     
     @ViewBuilder
     private var content: some View {
-        ZStack {
-            List(selection: $viewModel.selectedUser) {
-                ForEach(viewModel.users) { user in
-                    NavigationLink(user.login, value: user)
+        VStack {
+            // TODO: replace simple text input with custom control to e.g.: "search by location/company" and order
+            TextField("Search for users", text: $searchText.text)
+                .onChange(of: searchText.debouncedText) { searchTerm in
+                    if !searchTerm.isEmpty  {
+                        viewModel.searchForUsers(byName: searchTerm)
+                    } else {
+                        // NOTE: ? Should I hide results or cache the last list?
+                    }
                 }
-                
-                if viewModel.loadingState != .finishedAll && !searchText.debouncedText.isEmpty {
-                    HStack{
-                        Spacer()
-                        VStack {
+                .textFieldStyle(.roundedBorder)
+                .padding()
+                .frame(maxWidth: .infinity)
+            
+            ZStack {
+                List(selection: $viewModel.selectedUser) {
+                    ForEach(viewModel.users) { user in
+                        NavigationLink(user.login, value: user)
+                    }
+                    
+                    if viewModel.loadingState != .finishedAll && !searchText.debouncedText.isEmpty {
+                        HStack{
                             Spacer()
-                            ProgressView()
-                                .id(UUID()) /// must be identifiable on the list (otherwise will be hidden after reload)
-                                .progressViewStyle(CircularProgressViewStyle(tint: ViewsConstants.accentColor))
+                            VStack {
+                                Spacer()
+                                ProgressView()
+                                    .id(UUID()) /// must be identifiable on the list (otherwise will be hidden after reload)
+                                    .progressViewStyle(CircularProgressViewStyle(tint: ViewsConstants.accentColor))
+                                Spacer()
+                            }
                             Spacer()
                         }
-                        Spacer()
-                    }
-                    .frame(height: Layout.loadingIndicatorHeight)
-                    .onAppear{
-                        viewModel.loadNextPageOfUsers()
+                        .frame(height: Layout.loadingIndicatorHeight)
+                        .onAppear{
+                            viewModel.loadNextPageOfUsers()
+                        }
                     }
                 }
-            }
-            .onAppear {
-                // TODO: remove debug
-                searchText.text = "Debug test"
-            }
-            .searchable(text: $searchText.text, prompt: "Search for users")
-            .onChange(of: searchText.debouncedText) { searchTerm in
-                if !searchTerm.isEmpty  {
-                    viewModel.searchForUsers(byName: searchTerm)
-                } else {
-                    Log.todo("empty view")
-                }
-            }
-            
-            if searchText.text.isEmpty {
-                NoResultsPlaceholder(imageName: "rectangle.and.text.magnifyingglass", text: String(localized: "Enter name in search bar"))
-                    .padding()
-            }
-            
-            if case let LoadingState.error(message) = viewModel.loadingState {
+                .listStyle(.plain)
                 
-                ErrorInfoView(imageName: "exclamationmark.icloud", text: message)
+                if searchText.text.isEmpty {
+                    NoResultsPlaceholder(imageName: "rectangle.and.text.magnifyingglass", text: String(localized: "Enter name in search bar"))
+                        .padding()
+                }
+                
+                if case let LoadingState.error(message) = viewModel.loadingState {
+                    
+                    ErrorInfoView(imageName: "exclamationmark.icloud", text: message)
+                }
             }
+            .frame(maxHeight: .infinity)
         }
         .navigationTitle("List")
         

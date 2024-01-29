@@ -33,6 +33,15 @@ final class DataProviderTests: XCTestCase {
                 XCTFail("Unexpected error: \(error)")
             }
         }
+        
+        sut.getUserDetails(userUrl: "UserDetails3.json") { result in
+            switch result {
+            case .success(let userDetails):
+                XCTAssertEqual(userDetails.type, "Organization")
+            case .failure(let error):
+                XCTFail("Unexpected error: \(error)")
+            }
+        }
     }
 
 }

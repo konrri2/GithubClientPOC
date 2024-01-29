@@ -10,6 +10,7 @@ import Alamofire
 
 final class NetworkDataProvider: DataProviderProtocol {
     private var currentListRequest: Alamofire.DataRequest?
+    private var currentDetailsRequest: Alamofire.DataRequest?
     
     /// NOTE: The `SecretSettings.swift` file with `globalApiToken` is not pushed to repo
     /// Please provide github api token
@@ -36,8 +37,9 @@ final class NetworkDataProvider: DataProviderProtocol {
     }
     
     func getUserDetails(userUrl: String, completion: @escaping (Result<UserDetails, Error>) -> Void) {
-        AF.request(userUrl, method: .get, headers: headers)
-            .responseDecodable(of: UserDetails.self) { response in
+        Log.debug("======Get user details: \(userUrl)")
+        let currentDetailsRequest = AF.request(userUrl, method: .get, headers: headers)
+        currentDetailsRequest.responseDecodable(of: UserDetails.self) { response in
                 // NOTE: use custom errors messages prepared by UI/UX designer
                 completion(response.result.mapError { $0 as Error })
             }

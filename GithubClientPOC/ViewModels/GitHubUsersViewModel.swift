@@ -34,7 +34,9 @@ final class GitHubUsersViewModel: ObservableObject {
     @Published var users: [User] = []
     @Published var selectedUser: User? {
         didSet {
-            loadUserDetails()
+            if selectedUser != oldValue {
+                loadUserDetails()
+            }
         }
     }
     
@@ -53,6 +55,13 @@ final class GitHubUsersViewModel: ObservableObject {
         self.dataProvider = dataProvider
         
         setupReachabilityBinding()
+    }
+    
+    func initialSetup() {
+        dataProvider.cancelPreviousListRequest()
+        users = []
+        pageNumber = 0
+        loadingState = .waitAndReady
     }
     
     func searchForUsers(byName name: String) {
@@ -95,6 +104,7 @@ final class GitHubUsersViewModel: ObservableObject {
             dataProvider.getUserDetails(userUrl: user.url) { [weak self] result in
                 switch result {
                 case .success(let resp):
+                    self?.detailsLoadingErrorMessage = nil
                     self?.selectedUserDetails = resp
                 case .failure(let error):
                     Log.error("Cannot load user details \(error.localizedDescription)")

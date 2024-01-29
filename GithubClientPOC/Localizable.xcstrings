@@ -2,7 +2,14 @@
   "sourceLanguage" : "en",
   "strings" : {
     "Biography:" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Biografia:"
+          }
+        }
+      }
     },
     "cancel" : {
       "extractionState" : "manual",
@@ -22,7 +29,14 @@
       }
     },
     "Company name:" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Firma:"
+          }
+        }
+      }
     },
     "Enter name in search bar" : {
       "localizations" : {
@@ -35,10 +49,24 @@
       }
     },
     "Followers" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obserwujący:"
+          }
+        }
+      }
     },
     "Following" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Obserwowani:"
+          }
+        }
+      }
     },
     "List" : {
       "localizations" : {
@@ -51,10 +79,24 @@
       }
     },
     "Location" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lokalizacja:"
+          }
+        }
+      }
     },
     "Name:" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nazwa:"
+          }
+        }
+      }
     },
     "No internet connection" : {
       "localizations" : {
@@ -94,10 +136,24 @@
       }
     },
     "Private repos" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prywatne repozytoria"
+          }
+        }
+      }
     },
     "Public repos" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Publiczne repozytoria"
+          }
+        }
+      }
     },
     "Search for users" : {
       "localizations" : {
@@ -110,10 +166,24 @@
       }
     },
     "Twitter name:" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nick na twiterze"
+          }
+        }
+      }
     },
     "Type" : {
-
+      "localizations" : {
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Typ"
+          }
+        }
+      }
     },
     "User details" : {
       "localizations" : {

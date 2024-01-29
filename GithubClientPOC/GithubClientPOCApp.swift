@@ -12,7 +12,7 @@ struct GithubClientPOCApp: App {
     var body: some Scene {
         WindowGroup {
             let vm = GitHubUsersViewModel(dataProvider: NetworkDataProvider())
-            //let vm = GitHubUsersViewModel(dataProvider: MockSlowDataProvider())
+            // For manual tests // let vm = GitHubUsersViewModel(dataProvider: MockSlowDataProvider())
             ContentView(viewModel: vm)
         }
     }
