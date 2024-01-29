@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "Biography:" : {
+
+    },
     "cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -18,6 +21,9 @@
         }
       }
     },
+    "Company name:" : {
+
+    },
     "Enter name in search bar" : {
       "localizations" : {
         "pl" : {
@@ -28,6 +34,12 @@
         }
       }
     },
+    "Followers" : {
+
+    },
+    "Following" : {
+
+    },
     "List" : {
       "localizations" : {
         "pl" : {
@@ -37,6 +49,12 @@
           }
         }
       }
+    },
+    "Location" : {
+
+    },
+    "Name:" : {
+
     },
     "No internet connection" : {
       "localizations" : {
@@ -75,6 +93,12 @@
         }
       }
     },
+    "Private repos" : {
+
+    },
+    "Public repos" : {
+
+    },
     "Search for users" : {
       "localizations" : {
         "pl" : {
@@ -84,6 +108,12 @@
           }
         }
       }
+    },
+    "Twitter name:" : {
+
+    },
+    "Type" : {
+
     },
     "User details" : {
       "localizations" : {

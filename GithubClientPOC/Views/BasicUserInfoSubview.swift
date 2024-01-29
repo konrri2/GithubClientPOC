@@ -27,8 +27,9 @@ struct BasicUserInfoSubview: View {
             VStack(alignment: .leading) {
                 Text(user.login)
                     .font(.title)
-                if let url = URL(string: user.htmlURL) {
-                    Link(user.htmlURL, destination: url)
+                if let urlStr = user.htmlURL,
+                    let url = URL(string: urlStr) {
+                    Link(urlStr, destination: url)
                 }
             }
         }

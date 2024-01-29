@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// To test paging returns small batch of data after few seconds
+/// To test UX experience and paging mechanism - this dataProvider returns small batch of data after short delay
 final class MockSlowDataProvider: DataProviderProtocol {
     func getUsersList(byName name: String, page: Int, completion: @escaping (Result<UsersListResponse, Error>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {

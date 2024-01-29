@@ -24,7 +24,6 @@ final class GitHubUsersViewModelTests: XCTestCase {
         }
         viewModel.searchForUsers(byName: "mock data provider does not care about the name input")
         wait(for: [expectation0], timeout: 7.0)
-
     }
     
     /// Simulates user scrolling and data is slowly loading  page by page

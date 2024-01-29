@@ -11,17 +11,18 @@ import Foundation
 struct User: Decodable, Identifiable, Hashable {
     let login: String
     let id: Int
-    let nodeID: String
+    let nodeID: String?
     let avatarURL: String
-    let gravatarID: String
-    let url, htmlURL, followersURL: String
-    let followingURL, gistsURL, starredURL: String
-    let subscriptionsURL, organizationsURL, reposURL: String
-    let eventsURL: String
-    let receivedEventsURL: String
-    let type: String
-    let siteAdmin: Bool
-    let score: Int
+    let gravatarID: String?
+    let url: String
+    let htmlURL, followersURL: String?
+    let followingURL, gistsURL, starredURL: String?
+    let subscriptionsURL, organizationsURL, reposURL: String?
+    let eventsURL: String?
+    let receivedEventsURL: String?
+    let type: String?
+    let siteAdmin: Bool?
+    let score: Int?
 
     enum CodingKeys: String, CodingKey {
         case login, id

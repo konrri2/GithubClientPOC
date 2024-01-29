@@ -18,8 +18,9 @@ final class MockInstantDataProvider: DataProviderProtocol {
         }
     }
     
+    /// Mock function, takes local json file as parameter
     func getUserDetails(userUrl: String, completion: @escaping (Result<UserDetails, Error>) -> Void) {
-        completion(.success(UserDetails.readUserFromJson()))
+        completion(.success(UserDetails.readUserFromJson(forFile: userUrl)))
     }
     
     func cancelPreviousListRequest() {

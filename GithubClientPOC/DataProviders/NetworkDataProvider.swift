@@ -36,7 +36,6 @@ final class NetworkDataProvider: DataProviderProtocol {
     }
     
     func getUserDetails(userUrl: String, completion: @escaping (Result<UserDetails, Error>) -> Void) {
-        Log.debug("===== getUserDetails(userUrl \(userUrl)")
         AF.request(userUrl, method: .get, headers: headers)
             .responseDecodable(of: UserDetails.self) { response in
                 // NOTE: use custom errors messages prepared by UI/UX designer

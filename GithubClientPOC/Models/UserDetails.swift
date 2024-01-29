@@ -20,7 +20,8 @@ struct UserDetails: Decodable {
     let receivedEventsURL: String?
     let type: String?
     let siteAdmin: Bool?
-    let name, company: String?
+    let name: String
+    let company: String?
     let blog: String?
     let location, email: String?
     let hireable: Bool?
@@ -61,12 +62,18 @@ struct UserDetails: Decodable {
         case collaborators
         case twoFactorAuthentication = "two_factor_authentication"
     }
+    
+    // NOTE: This app is using only some important data, so I left most of the model's field optional
+    // If we need all the data, I would provide some placeholders, e.g.:
+    //    init(from decoder: Decoder) throws {
+    //          ...
+    //          company =  (try? values.decodeIfPresent(String.self,    forKey: .company    )) ?? "[No company]"
 }
 
 // MARK: - mock data for testing and preview
 extension UserDetails {
-    static func readUserFromJson() -> UserDetails {
-        guard let user = Bundle.main.decode(UserDetails.self, from: "UserDetails.json") else {
+    static func readUserFromJson(forFile file: String = "UserDetails.json") -> UserDetails {
+        guard let user = Bundle.main.decode(UserDetails.self, from: file) else {
             fatalError("Project is missing mock (or badly formatted)")
         }
         
